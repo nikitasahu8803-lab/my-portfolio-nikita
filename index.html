@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nikita Sahu — Computer Operator | IT & Software Domain">
+<title>Nikita Sahu — IT & Software Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#090b17; --bg2:#0e1122; --panel:rgba(21,25,48,.72);
+  --panel2:#171b35; --line:rgba(218,205,255,.16);
+  --text:#f8f6ff; --muted:#a9abc4;
+  --lav:#b9a5ff; --rose:#f39ab9; --peach:#ffd0c2;
+  --cream:#fff4ea; --accent:#d7c7ff;
+  --grad:linear-gradient(110deg,#a997ff,#e8a1c0 55%,#ffd1b7);
+  --sans:"DM Sans",sans-serif; --serif:"Playfair Display",serif; --mono:"Space Mono",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 12% 4%,#2a1d45 0,transparent 32%),radial-gradient(circle at 88% 12%,#3a2038 0,transparent 27%),radial-gradient(circle at 50% 75%,rgba(236,172,202,.055),transparent 34%),var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+a{color:inherit}.container{width:min(1160px,calc(100% - 40px));margin:auto}
+::selection{background:#e9afd0;color:#171127}
+body.loading{overflow:hidden}
+#three-bg{position:fixed;inset:0;z-index:-4;opacity:.65}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden}
+.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.22}
+.glow.one{width:380px;height:380px;background:#8d79ff;left:-140px;top:18%}
+.glow.two{width:320px;height:320px;background:#ef8db2;right:-110px;top:45%}
+.glow.three{width:300px;height:300px;background:#ffd1b7;left:38%;bottom:-160px;opacity:.1}
+.petal{position:absolute;width:10px;height:17px;border-radius:80% 20% 80% 20%;background:linear-gradient(135deg,#ffd9e7,#aa91ff);opacity:.42;filter:blur(.2px);animation:fall linear infinite}
+.petal:nth-child(1){left:7%;animation-duration:14s;animation-delay:-4s}.petal:nth-child(2){left:28%;animation-duration:18s;animation-delay:-12s}.petal:nth-child(3){left:54%;animation-duration:16s;animation-delay:-6s}.petal:nth-child(4){left:76%;animation-duration:20s;animation-delay:-14s}.petal:nth-child(5){left:91%;animation-duration:15s;animation-delay:-2s}
+@keyframes fall{0%{transform:translate3d(0,-12vh,0) rotate(0)}45%{transform:translate3d(45px,48vh,0) rotate(170deg)}100%{transform:translate3d(-35px,112vh,0) rotate(360deg)}}
+
+.preloader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 38%,rgba(245,190,211,.13),transparent 30%),radial-gradient(circle at 18% 80%,rgba(190,166,255,.14),transparent 30%),linear-gradient(145deg,#080a14,#110d1b 52%,#0b0b16);transition:opacity .85s ease,visibility .85s ease,transform .85s ease}
+.preloader.hide{opacity:0;visibility:hidden;transform:scale(1.025);pointer-events:none}
+.loader{position:relative;width:min(440px,86vw);text-align:center;color:#f8f6ff}
+.loader-bloom{position:absolute;left:50%;top:42%;width:180px;height:180px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(246,174,204,.22),transparent 68%);filter:blur(12px);animation:bloomPulse 2.6s ease-in-out infinite}
+.loader-flower{position:relative;width:112px;height:112px;margin:0 auto 25px;display:grid;place-items:center}
+.loader-flower:before,.loader-flower:after{content:"";position:absolute;inset:16px;border:1px solid rgba(255,210,226,.28);border-radius:50%;animation:flowerSpin 9s linear infinite}
+.loader-flower:after{inset:2px;border-color:rgba(198,181,255,.22);animation-direction:reverse;animation-duration:13s}
+.petal-core{position:absolute;width:22px;height:32px;border-radius:80% 20% 80% 20%;background:linear-gradient(145deg,#ffd9e7,#bba8ff);box-shadow:0 0 22px rgba(244,174,205,.32);transform-origin:50% 70%;animation:petalBreath 2s ease-in-out infinite}
+.petal-core:nth-child(1){transform:rotate(0deg) translateY(-22px)}.petal-core:nth-child(2){transform:rotate(72deg) translateY(-22px)}.petal-core:nth-child(3){transform:rotate(144deg) translateY(-22px)}.petal-core:nth-child(4){transform:rotate(216deg) translateY(-22px)}.petal-core:nth-child(5){transform:rotate(288deg) translateY(-22px)}
+.loader-center{position:relative;z-index:2;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cf,#efb7cc 60%,#a88fe0);box-shadow:0 0 30px rgba(255,198,219,.38)}
+.loader-name{font-family:var(--serif);font-size:clamp(31px,7vw,43px);letter-spacing:-.025em;margin:0}.loader-name span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.loader-sub{margin:7px 0 23px;color:#b9b4c8;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+.loader-line{width:145px;height:2px;margin:auto;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.1)}.loader-line i{display:block;width:42%;height:100%;border-radius:inherit;background:var(--grad);animation:loadSweep 1.25s ease-in-out infinite}
+.loader-status{margin-top:13px;color:#87839a;font-family:var(--mono);font-size:9px;letter-spacing:.08em}
+.loader-sprig{position:absolute;opacity:.35;font-size:34px;animation:sprigFloat 4s ease-in-out infinite}.loader-sprig.a{left:-18%;top:12%}.loader-sprig.b{right:-15%;bottom:15%;font-size:27px;animation-delay:-2s}
+@keyframes bloomPulse{50%{transform:translate(-50%,-50%) scale(1.15);opacity:.72}}@keyframes flowerSpin{to{transform:rotate(360deg)}}@keyframes petalBreath{50%{filter:brightness(1.14);margin-top:-3px}}@keyframes loadSweep{0%{transform:translateX(-150%)}100%{transform:translateX(370%)}}@keyframes sprigFloat{50%{transform:translateY(-10px) rotate(5deg)}}
+
+.nav{position:fixed;top:0;left:0;right:0;height:72px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 30px;background:rgba(9,11,23,.62);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:22px}.logo span{color:var(--rose)}
+.navlinks{display:flex;gap:25px;font-family:var(--mono);font-size:12px;color:#aaaac0}.navlinks a{text-decoration:none;transition:.2s}.navlinks a:hover{color:var(--peach)}
+.menu{display:none;border:1px solid var(--line);background:transparent;color:#fff;border-radius:10px;padding:8px 11px}
+@media(max-width:760px){.navlinks{display:none}.menu{display:block}}
+
+.hero{min-height:100vh;display:grid;align-items:center;padding:125px 0 70px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:12px;color:var(--lav);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.eyebrow:before{content:"✦ ";color:var(--rose)}
+h1{font-family:var(--serif);font-size:clamp(58px,8vw,104px);line-height:.93;letter-spacing:-.045em;margin:0 0 22px}
+h1 .gradient{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:var(--mono);color:var(--rose);font-size:14px;margin-bottom:18px}
+.lead{max-width:650px;color:var(--muted);font-size:18px;line-height:1.75;margin:0 0 30px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;text-decoration:none;font-family:var(--mono);font-size:12px;border:1px solid var(--line);transition:.25s;min-height:45px}.btn.primary{background:var(--grad);color:#171126;border:0;font-weight:700;box-shadow:0 16px 45px rgba(221,150,193,.18)}.btn:hover{transform:translateY(-3px);border-color:#c6b7ff}.btn.ghost{background:rgba(255,255,255,.035)}
+.hero-note{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;color:#8f92ad;font-family:var(--mono);font-size:11px}.hero-note span{display:flex;gap:7px;align-items:center}.dot{width:7px;height:7px;border-radius:50%;background:var(--rose);box-shadow:0 0 15px #ef8db2}
+
+.profile-wrap{display:grid;place-items:center;perspective:1200px}
+.profile-card{position:relative;width:min(380px,100%);padding:20px;border:1px solid rgba(228,215,255,.2);border-radius:28px;background:linear-gradient(145deg,rgba(30,34,64,.88),rgba(15,18,37,.72));backdrop-filter:blur(18px);box-shadow:0 40px 100px rgba(0,0,0,.4),0 0 90px rgba(185,165,255,.12);transform-style:preserve-3d;transition:transform .12s ease-out}
+.profile-card:after{content:"❀";position:absolute;left:-18px;top:34px;font-size:24px;color:#f3bfd4;opacity:.72;filter:drop-shadow(0 0 12px rgba(243,154,185,.3));animation:float 4.5s ease-in-out infinite reverse;z-index:3}.profile-card:before{content:"";position:absolute;inset:-1px;border-radius:29px;padding:1px;background:linear-gradient(140deg,rgba(211,196,255,.65),transparent 35%,rgba(239,154,185,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.photo-frame{height:330px;border-radius:21px;overflow:hidden;position:relative;background:#ddd;transform:translateZ(30px)}.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 43%;filter:saturate(.95) contrast(1.02)}.photo-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,10,20,.58),transparent 50%)}
+.card-caption{display:flex;justify-content:space-between;align-items:end;padding:17px 5px 3px;transform:translateZ(45px)}.card-caption strong{font-family:var(--serif);font-size:22px}.card-caption small{display:block;color:#9295b0;font-family:var(--mono);font-size:10px;margin-top:3px}.status{font-family:var(--mono);font-size:10px;color:#d9d1ff}.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b8ffcf;margin-right:6px;box-shadow:0 0 12px #b8ffcf}
+.orbit{position:absolute;inset:-32px;pointer-events:none;transform-style:preserve-3d}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(215,199,255,.17);border-radius:50%;inset:6%;transform:rotateX(64deg) rotateZ(15deg)}.orbit:after{inset:12%;transform:rotateX(64deg) rotateZ(-35deg);border-color:rgba(243,154,185,.15)}
+.flower{position:absolute;font-size:27px;filter:drop-shadow(0 0 15px rgba(244,181,213,.3));animation:float 5s ease-in-out infinite}.flower.f1{right:-25px;top:25px}.flower.f2{left:-32px;bottom:55px;font-size:22px;animation-delay:-2s}.flower.f3{right:30px;bottom:-28px;font-size:19px;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-10px) rotate(7deg)}}
+
+.section{padding:110px 0;position:relative}.section:nth-of-type(even):before{content:"✿";position:absolute;right:3%;top:80px;font-size:38px;color:rgba(246,190,214,.10);filter:blur(.2px);transform:rotate(18deg)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:40px}.kicker{font-family:var(--mono);font-size:11px;color:var(--lav);text-transform:uppercase;letter-spacing:.1em;margin:0 0 9px}.section h2{font-family:var(--serif);font-size:clamp(34px,5vw,54px);line-height:1;margin:0}.section-intro{max-width:500px;color:var(--muted);margin:0}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.glass{border:1px solid rgba(237,209,224,.14);background:linear-gradient(145deg,rgba(30,34,64,.74),rgba(20,19,39,.68));backdrop-filter:blur(14px);border-radius:20px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.16)}.about-copy{font-size:18px;line-height:1.9;color:#d8d7e5}.mini-list{display:grid;gap:13px}.mini-list div{padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);font-family:var(--mono);font-size:11px;color:#c3c5d8}.mini-list b{color:#fff}
+
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.skill{min-height:205px;position:relative;overflow:hidden;transition:.3s}.skill:hover{transform:translateY(-6px);border-color:rgba(210,193,255,.4)}.skill-icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(185,165,255,.18),rgba(243,154,185,.1));font-size:20px;margin-bottom:24px}.skill h3{font-family:var(--serif);font-size:21px;margin:0 0 12px}.skill p{font-size:14px;color:var(--muted);margin:0;line-height:1.8}.skill:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-55px;bottom:-55px;background:#b9a5ff;filter:blur(55px);opacity:.12}
+
+.experience{display:grid;grid-template-columns:.7fr 1.3fr;gap:20px}.job-card{position:relative}.job-meta{font-family:var(--mono);font-size:11px;color:var(--lav);margin-bottom:10px}.job-card h3{font-family:var(--serif);font-size:30px;margin:0 0 5px}.company{color:#ddd8ee;margin-bottom:24px}.job-list{margin:0;padding:0;list-style:none;display:grid;gap:11px}.job-list li{position:relative;padding-left:23px;color:var(--muted)}.job-list li:before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--rose);box-shadow:0 0 12px rgba(243,154,185,.5)}
+
+.project{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}.project-window{overflow:hidden;padding:0}.windowbar{display:flex;align-items:center;gap:7px;padding:13px 17px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.025)}.win-dot{width:8px;height:8px;border-radius:50%;background:#d8c8ff}.win-dot:nth-child(2){background:#f0a9bf}.win-dot:nth-child(3){background:#ffd4b9}.code{padding:25px;font-family:var(--mono);font-size:12px;line-height:2;color:#bfc0d2;overflow:auto}.code .purple{color:#c5b3ff}.code .pink{color:#f2a8c4}.code .cream{color:#ffd6c2}.project-copy h3{font-family:var(--serif);font-size:34px;margin:0 0 12px}.project-copy p{color:var(--muted);line-height:1.8}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.tag{font-family:var(--mono);font-size:10px;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:#d9d5e8;background:rgba(255,255,255,.025)}
+
+.timeline{position:relative;margin-left:7px}.timeline:before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--lav),rgba(243,154,185,.15))}
+.edu{position:relative;padding-left:38px;padding-bottom:35px}.edu:last-child{padding-bottom:0}.edu-dot{position:absolute;left:2px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--bg2);border:2px solid var(--lav);box-shadow:0 0 15px rgba(185,165,255,.3)}.edu-year{font-family:var(--mono);font-size:10px;color:var(--rose)}.edu h3{font-family:var(--serif);font-size:22px;margin:4px 0}.edu p{color:var(--muted);margin:0}
+
+.certs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.cert{display:flex;justify-content:space-between;gap:20px;align-items:center}.cert-title{font-weight:600}.cert small{font-family:var(--mono);font-size:10px;color:var(--lav);white-space:nowrap}.cert span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+
+.strengths{display:flex;flex-wrap:wrap;gap:10px}.strength{padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:13px;color:#ddd9e9;transition:.2s}.strength:hover{transform:translateY(-2px);border-color:#c4b3ff}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact-card{display:grid;gap:14px}.contact-item{display:flex;align-items:center;gap:14px;padding:16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025);text-decoration:none}.contact-icon{width:39px;height:39px;border-radius:11px;display:grid;place-items:center;background:rgba(185,165,255,.1);color:var(--lav)}.contact-item small{font-family:var(--mono);font-size:9px;color:#8588a4;display:block}.contact-item strong{font-size:14px;word-break:break-word}.declaration{color:#8f92ab;font-family:var(--mono);font-size:11px;line-height:1.8}
+
+footer{padding:35px 0;border-top:1px solid var(--line);color:#74778f;font-family:var(--mono);font-size:10px;text-align:center}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}.reveal.in{opacity:1;transform:none}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--grad);z-index:100}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.experience,.project,.contact{grid-template-columns:1fr}
+  .hero-grid{gap:45px}.profile-wrap{order:-1}.profile-card{max-width:350px}.skills{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .container{width:min(100% - 28px,1160px)}.nav{padding:0 16px}.hero{padding-top:115px}.section{padding:75px 0}
+  .skills,.certs{grid-template-columns:1fr}.section-head{display:block}.section-intro{margin-top:15px}.profile-card{width:100%}.photo-frame{height:310px}
+  h1{font-size:60px}.lead{font-size:16px}.glass{padding:22px}.project-copy h3{font-size:29px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+  #three-bg{display:none}.reveal{opacity:1;transform:none}
+}
+@media(pointer:coarse){.custom-only{display:none!important}}
+</style>
+</head>
+<body class="loading">
+<div class="preloader" id="preloader" aria-label="Loading Nikita Sahu portfolio">
+  <div class="loader-bloom"></div>
+  <div class="loader-sprig a">❀</div><div class="loader-sprig b">✿</div>
+  <div class="loader">
+    <div class="loader-flower" aria-hidden="true">
+      <i class="petal-core"></i><i class="petal-core"></i><i class="petal-core"></i><i class="petal-core"></i><i class="petal-core"></i>
+      <b class="loader-center"></b>
+    </div>
+    <h2 class="loader-name">Nikita <span>Sahu</span></h2>
+    <div class="loader-sub">personal portfolio · 2026</div>
+    <div class="loader-line"><i></i></div>
+    <div class="loader-status" id="loaderStatus">opening something beautiful...</div>
+  </div>
+</div>
+
+<canvas id="three-bg"></canvas>
+<div class="noise"></div>
+<div class="ambient"><div class="glow one"></div><div class="glow two"></div><div class="glow three"></div><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i></div>
+<div class="progress" id="progress"></div>
+
+<nav class="nav">
+  <a href="#home" class="logo">Nikita <span>Sahu</span></a>
+  <div class="navlinks">
+    <a href="#about">about</a><a href="#skills">skills</a><a href="#experience">experience</a><a href="#project">project</a><a href="#education">education</a><a href="#contact">contact</a>
+  </div>
+  <button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">professional portfolio · 2026</div>
+      <h1>Nikita<br><span class="gradient">Sahu</span></h1>
+      <div class="role">COMPUTER OPERATOR | IT & SOFTWARE DOMAIN</div>
+      <p class="lead">Motivated and detail-oriented BCA student with hands-on experience as a Computer Operator, seeking a full-time opportunity in the IT and Software domain to apply technical skills, contribute to organizational growth, and continuously learn and grow.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#experience">View experience</a>
+        <a class="btn ghost" href="#contact">Contact Nikita</a>
+      </div>
+      <div class="hero-note">
+        <span><i class="dot"></i>Currently working</span>
+        <span>✦ BCA · 5th Semester</span>
+        <span>✦ SGPA 8.0</span>
+      </div>
+    </div>
+
+    <div class="profile-wrap">
+      <div class="profile-card" id="profileCard">
+        <div class="orbit"></div>
+        <span class="flower f1">✿</span><span class="flower f2">❀</span><span class="flower f3">✦</span>
+        <div class="photo-frame"><img src="Nikita.png" alt="Nikita Sahu"></div>
+        <div class="card-caption">
+          <div><strong>Nikita Sahu</strong><small>Computer Operator · IT / Software</small></div>
+          <div class="status"><i></i>Working</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// about</p><h2>Professional profile</h2></div><p class="section-intro">A practical IT profile combining BCA education, computer operations, data management and modern digital tools.</p></div>
+  <div class="about-grid">
+    <div class="glass reveal"><p class="about-copy">Nikita is a BCA student with a strong interest in the IT and Software domain. Her experience as a Computer Operator includes patient registration, data entry, documentation, billing software, online portal work and daily data management. She is seeking a full-time opportunity where she can apply her technical skills and continue developing professionally.</p></div>
+    <div class="glass reveal"><div class="mini-list">
+      <div><b>Current role</b><br>Computer Operator</div>
+      <div><b>Domain</b><br>IT & Software</div>
+      <div><b>Education</b><br>BCA · Anjaneya University</div>
+      <div><b>Languages</b><br>Hindi · Chhattisgarhi</div>
+    </div></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="skills">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// technical toolkit</p><h2>Skills</h2></div><p class="section-intro">The technical and productivity skills listed in the resume, organized into focused groups.</p></div>
+  <div class="skills">
+    <article class="glass skill reveal"><div class="skill-icon">⌘</div><h3>Programming</h3><p>C, C++, Java, Python, JavaScript, PHP</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">◇</div><h3>Web Technologies</h3><p>HTML, CSS, JavaScript</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">◉</div><h3>Database</h3><p>SQL, MySQL, SQL Server</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">⌁</div><h3>Tools & Platforms</h3><p>Git, GitHub, VS Code, Visual Studio, Firebase</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">▣</div><h3>Computer Skills</h3><p>MS Word, Excel, PowerPoint, Google Docs, Google Sheets, computer operations, software installation, basic troubleshooting, internet & email</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">✦</div><h3>AI Tools</h3><p>ChatGPT, Gemini, Claude</p></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="experience">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// work experience</p><h2>Experience</h2></div><p class="section-intro">Hands-on experience in hospital computer operations, registration, documentation and daily data management.</p></div>
+  <div class="experience">
+    <div class="glass job-card reveal">
+      <div class="job-meta">25 AUG 2026 — PRESENT</div>
+      <h3>Computer Operator</h3>
+      <div class="company">Maa Padmavati Hospital, Pacheda, Raipur (CG)</div>
+      <div class="tag">PMJAY Provider Work</div>
+    </div>
+    <div class="glass reveal">
+      <ul class="job-list">
+        <li>Ayushman registration and related work (PMJAY Provider work).</li>
+        <li>Patient registration and data entry.</li>
+        <li>Record and document management.</li>
+        <li>Billing using hospital software.</li>
+        <li>MS Word and Excel documentation and reporting.</li>
+        <li>Printing, scanning and document handling.</li>
+        <li>Online portal work and daily data management.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="project">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// featured project</p><h2>Student CRUD</h2></div><p class="section-intro">A two-member offline project focused on student information entry and registration.</p></div>
+  <div class="project">
+    <div class="glass project-window reveal">
+      <div class="windowbar"><i class="win-dot"></i><i class="win-dot"></i><i class="win-dot"></i></div>
+      <pre class="code"><span class="purple">&lt;?php</span>
+<span class="pink">// Student CRUD project</span>
+
+<span class="purple">function</span> <span class="cream">addStudent</span>($student) {
+    <span class="pink">// student details entry</span>
+    <span class="pink">// registration functionality</span>
+    <span class="purple">return</span> $student;
+}
+
+<span class="purple">function</span> <span class="cream">manageStudents</span>() {
+    <span class="pink">// frontend design & coding</span>
+    <span class="purple">return</span> <span class="cream">"completed"</span>;
+}</pre>
+    </div>
+    <div class="glass project-copy reveal">
+      <h3>Student CRUD <span class="tag">Team size: 2</span></h3>
+      <p>Developed a Student CRUD project using HTML and PHP. Handled frontend design and coding, implemented student details entry and registration functionality, and completed the project successfully as an offline project.</p>
+      <div class="tags"><span class="tag">HTML</span><span class="tag">PHP</span><span class="tag">CRUD</span><span class="tag">Offline Project</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="education">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// academic timeline</p><h2>Education</h2></div><p class="section-intro">Academic journey from school education to the current BCA program.</p></div>
+  <div class="glass reveal timeline">
+    <div class="edu"><i class="edu-dot"></i><div class="edu-year">2025 — 2027 · CURRENT</div><h3>Bachelor of Computer Applications (BCA)</h3><p>Anjaneya University, Raipur (CG) · 5th Semester · Current SGPA: 8.0</p></div>
+    <div class="edu"><i class="edu-dot"></i><div class="edu-year">2023</div><h3>Higher Secondary (Class 12th)</h3><p>A. R. B. H. S. School, Chandkhuri · CGBSE · Science · 63%</p></div>
+    <div class="edu"><i class="edu-dot"></i><div class="edu-year">2021</div><h3>High School (Class 10th)</h3><p>A. R. B. H. S. School, Chandkhuri · CGBSE · 93%</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="certifications">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// certifications</p><h2>Credentials</h2></div><p class="section-intro">Certifications listed in the provided resume.</p></div>
+  <div class="certs">
+    <div class="glass cert reveal"><div><div class="cert-title">AB-PMJAY – Overview of Ayushman Bharat Pradhan Mantri Jan Arogya Yojna</div></div><small>24/06/2026</small></div>
+    <div class="glass cert reveal"><div><div class="cert-title">ABDM – Overview of Ayushman Bharat Digital Mission</div></div><small>23/06/2026</small></div>
+    <div class="glass cert reveal"><div><div class="cert-title">UMP for Users</div></div><small>21/06/2026</small></div>
+    <div class="glass cert reveal"><div><div class="cert-title">TMS Provider</div></div><small>30/06/2026</small></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="strengths">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// strengths</p><h2>What I bring</h2></div><p class="section-intro">Professional strengths documented in the resume.</p></div>
+  <div class="glass reveal strengths">
+    <span class="strength">Communication</span><span class="strength">Teamwork</span><span class="strength">Problem Solving</span><span class="strength">Leadership</span><span class="strength">Time Management</span><span class="strength">Adaptability</span><span class="strength">Quick Learning</span><span class="strength">Creativity</span><span class="strength">Attention to Detail</span><span class="strength">Technical Aptitude</span><span class="strength">Work Ethic</span>
+  </div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="container">
+  <div class="section-head reveal"><div><p class="kicker">// contact</p><h2>Let's connect</h2></div><p class="section-intro">For opportunities in the IT and Software domain.</p></div>
+  <div class="contact">
+    <div class="glass contact-card reveal">
+      <a class="contact-item" href="tel:9713664294"><div class="contact-icon">☎</div><div><small>PHONE</small><strong>9713664294</strong></div></a>
+      <a class="contact-item" href="mailto:nikitasahu8802@gmail.com"><div class="contact-icon">✉</div><div><small>EMAIL</small><strong>nikitasahu8802@gmail.com</strong></div></a>
+      <div class="contact-item"><div class="contact-icon">⌖</div><div><small>LOCATION</small><strong>Chandkhuri, Raipur, Chhattisgarh, India</strong></div></div>
+    </div>
+    <div class="glass reveal declaration">
+      <p>Motivated to apply technical skills, contribute effectively to an organization, and continuously learn and grow.</p>
+      <p>Hindi — Fluent<br>Chhattisgarhi — Fluent</p>
+      <p style="color:#d6cfff">— Nikita Sahu</p>
+    </div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>nikita.sahu · professional portfolio · 2026</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Elegant floral preloader — intentionally short so the portfolio never feels stuck
+  const pre = document.getElementById('preloader');
+  const status = document.getElementById('loaderStatus');
+  const messages = ['opening something beautiful...','bringing the details together...','welcome to Nikita’s portfolio.'];
+  if (reduce) {
+    pre.classList.add('hide'); document.body.classList.remove('loading');
+  } else {
+    let step = 0;
+    const finish = () => {
+      status.textContent = messages[messages.length - 1];
+      pre.classList.add('hide');
+      document.body.classList.remove('loading');
+    };
+    const tick = () => {
+      status.textContent = messages[step] || messages[messages.length - 1];
+      step++;
+      if (step < messages.length) setTimeout(tick, 380);
+      else setTimeout(finish, 430);
+    };
+    setTimeout(tick, 180);
+    // Safety fallback: even if another resource is slow, never trap the visitor on the loader.
+    setTimeout(finish, 1850);
+  }
+
+  // Mobile navigation
+  const menu = document.getElementById('menuBtn');
+  const navlinks = document.querySelector('.navlinks');
+  menu.addEventListener('click',()=> {
+    const open = navlinks.style.display === 'flex';
+    navlinks.style.display = open ? '' : 'flex';
+    if(!open){navlinks.style.position='absolute';navlinks.style.top='72px';navlinks.style.left='14px';navlinks.style.right='14px';navlinks.style.padding='16px';navlinks.style.flexDirection='column';navlinks.style.background='rgba(13,16,33,.96)';navlinks.style.border='1px solid var(--line)';navlinks.style.borderRadius='15px';}
+  });
+  navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=760) navlinks.style.display='none'}));
+
+  // Reveal
+  const reveal = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.12});
+    reveal.forEach(x=>io.observe(x));
+  } else reveal.forEach(x=>x.classList.add('in'));
+
+  // Profile tilt
+  const card=document.getElementById('profileCard');
+  if(card && !reduce && matchMedia('(pointer:fine)').matches){
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>card.style.transform='rotateY(0) rotateX(0)');
+  }
+
+  // Scroll progress
+  const progress=document.getElementById('progress');
+  addEventListener('scroll',()=>{
+    const d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+    progress.style.width=(max?d.scrollTop/max*100:0)+'%';
+  },{passive:true});
+
+  // Three.js ambient 3D scene
+  const canvas=document.getElementById('three-bg');
+  if(!reduce && window.THREE){
+    const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+    const scene=new THREE.Scene();
+    const camera=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,.1,100);
+    camera.position.z=30;
+    const group=new THREE.Group(); scene.add(group);
+
+    const count=window.innerWidth<700?65:120;
+    const pos=new Float32Array(count*3);
+    for(let i=0;i<count;i++){pos[i*3]=(Math.random()-.5)*46;pos[i*3+1]=(Math.random()-.5)*28;pos[i*3+2]=(Math.random()-.5)*22;}
+    const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    const mat=new THREE.PointsMaterial({color:0xc7b8ff,size:.12,transparent:true,opacity:.72});
+    group.add(new THREE.Points(geo,mat));
+
+    const torus=new THREE.Mesh(
+      new THREE.TorusKnotGeometry(7.5,0.08,120,10),
+      new THREE.MeshBasicMaterial({color:0xb9a5ff,wireframe:true,transparent:true,opacity:.13})
+    );
+    torus.position.set(13,-2,-10); group.add(torus);
+
+    const ring=new THREE.Mesh(
+      new THREE.TorusGeometry(9,0.045,12,80),
+      new THREE.MeshBasicMaterial({color:0xf39ab9,wireframe:true,transparent:true,opacity:.12})
+    );
+    ring.position.set(-12,5,-14); ring.rotation.x=1.1; group.add(ring);
+
+    let mx=0,my=0;
+    addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5)});
+    function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()}
+    resize(); addEventListener('resize',resize);
+    const clock=new THREE.Clock();
+    function loop(){
+      const t=clock.getElapsedTime();
+      group.rotation.y=t*.018+mx*.08; group.rotation.x=my*.035;
+      torus.rotation.x=t*.055; torus.rotation.z=t*.025;
+      ring.rotation.z=t*.035;
+      renderer.render(scene,camera); requestAnimationFrame(loop);
+    }
+    loop();
+  } else if(reduce){canvas.style.display='none'}
+})();
+</script>
+</body>
+</html>
